@@ -1,60 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <title>Quiz Interativo</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
+      <div id="menu">
+        <h1>Quiz</h1>
+        <p id="splash_text">Texto legal</p>
+        <p>Recorde:</p>
 
-        <div id="menu">
-            <h1>Quiz</h1>
-            <p id="splash-text"></p>
-            <p>Recorde: </p>
+        <button id="play_button">Jogar</button>
+        <button>Sobre</button>
+      </div>
 
-            <button id="play-button">Jogar</button>
-            <button>Sobre</button>
+      <div id="about">
+        <div class="window">
+          <div class="window-header">
+            <picture>
+              <img src="" alt="Ícone do Quiz Interativo" />
+            </picture>
+
+            <h1>sobre.exe</h1>
+
+            <button></button>
+          </div>
+
+          <h2>Sobre o projeto:</h2>
+          <p></p>
         </div>
+      </div>
 
-        <div id="about">
+      <div id="play_area">
+        <h1 id="question_title">Question 1</h1>
+        <h2 id="question"></h2>
+        <picture>
+          <img id="question_image" src="" alt="" />
+        </picture>
 
-        </div>
+        <!-- OPTION 1 -->
+        <button class="option" id="option_1">
+          <i class="bi bi-1-circle-fill"></i>
+          <p id="answer"></p>
+        </button>
 
-        <div id="play-area">
-            <h1 id="question-title">Question 1</h1>
-            <h2 id="question"></h2>
+        <!-- OPTION 2 -->
+        <button class="option" id="option_2">
+          <i class="bi bi-2-circle-fill"></i>
+          <p id="answer"></p>
+        </button>
 
-            <!-- OPTION 1 -->
-            <button id="option-1">
-                <i class="bi bi-1-circle-fill"></i>
-                <p id="answer"></p>
-            </button>
+        <!-- OPTION 3 -->
+        <button class="option" id="option_3">
+          <i class="bi bi-3-circle-fill"></i>
+          <p id="answer"></p>
+        </button>
 
-            <!-- OPTION 2 -->
-            <button id="option-2">
-                <i class="bi bi-2-circle-fill"></i>
-                <p id="answer"></p>
-            </button>
-
-            <!-- OPTION 3 -->
-            <button id="option-3">
-                <i class="bi bi-3-circle-fill"></i>
-                <p id="answer"></p>
-            </button>
-
-            <!-- OPTION 4 -->
-            <button>
-                <i class="bi bi-4-circle-fill"></i>
-                <p id="answer"></p>
-            </button>
-        </div>
-
+        <!-- OPTION 4 -->
+        <button class="option" id="option_4">
+          <i class="bi bi-4-circle-fill"></i>
+          <p id="answer"></p>
+        </button>
+      </div>
     </main>
-</body>
 
+    <script type="module" src="script.js"></script>
+    <script type="module" src="database.js"></script>
+  </body>
 </html>
