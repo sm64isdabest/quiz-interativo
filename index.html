@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,12 +14,12 @@
   <body>
     <main>
       <div id="menu">
-        <h1>Quiz</h1>
-        <p id="splash_text">Texto legal</p>
-        <p>Recorde:</p>
+        <h1 class="consolas-font">Quiz</h1>
+        <p class="consolas-font" id="splash_text">Texto legal</p>
+        <!-- <p class="consolas-font">Recorde:</p> -->
 
-        <button id="play_button">Jogar</button>
-        <button>Sobre</button>
+        <button class="consolas-font" id="play_button">Jogar</button>
+        <button class="consolas-font" id="about_button">Sobre</button>
       </div>
 
       <div id="about">
@@ -41,44 +41,50 @@
 
       <div id="play_area">
         <div class="dificulty-box">
-          <p id="easy">> EASY <</p>
-          <p id="medium">MEDIUM</p>
-          <p id="hard">HARD</p>
+          <p class="consolas-font" id="easy">> EASY <</p>
+          <p class="consolas-font" id="medium">MEDIUM</p>
+          <p class="consolas-font" id="hard">HARD</p>
         </div>
 
-        <h1 id="question_title">Question 1</h1>
-        <h2 id="question"></h2>
-        <picture>
-          <img id="question_image" src="" alt="" />
-        </picture>
+        <div id="question-box">
+          <h1 class="consolas-font" id="question_title">Question 1</h1>
+          <h2 class="consolas-font" id="question"></h2>
+          <picture>
+            <img id="question_image" src="" alt="" />
+          </picture>
+
+          <!-- Estará invisível até o jogo acabar -->
+          <button class="consolas-font" id="return">Voltar</button>
+        </div>
 
         <!-- OPTION 1 -->
         <button class="option" id="option_1">
           <i class="bi bi-1-circle-fill"></i>
-          <p id="answer"></p>
+          <p class="consolas-font" id="answer"></p>
         </button>
 
         <!-- OPTION 2 -->
         <button class="option" id="option_2">
           <i class="bi bi-2-circle-fill"></i>
-          <p id="answer"></p>
+          <p class="consolas-font" id="answer"></p>
         </button>
 
         <!-- OPTION 3 -->
         <button class="option" id="option_3">
           <i class="bi bi-3-circle-fill"></i>
-          <p id="answer"></p>
+          <p class="consolas-font" id="answer"></p>
         </button>
 
         <!-- OPTION 4 -->
         <button class="option" id="option_4">
           <i class="bi bi-4-circle-fill"></i>
-          <p id="answer"></p>
+          <p class="consolas-font" id="answer"></p>
         </button>
       </div>
     </main>
 
+    <script src="splash-text.js"></script>
     <script type="module" src="script.js"></script>
-    <script type="module" src="database.js"></script>
+    <script type="module" src="questions.js"></script>
   </body>
 </html>
