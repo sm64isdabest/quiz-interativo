@@ -2,7 +2,7 @@ import {
     easy_questions,
     medium_questions,
     hard_questions,
-} from "./database.js";
+} from "./questions.js";
 
 // GAME ELEMENTS
 let points = 0;
@@ -11,7 +11,6 @@ let questionNumber = 0;
 // 1 - Easy
 // 2 - Medium
 // 3 - Hard
-
 
 // HTML ELEMENTS
 let easytext = document.getElementById("easy");
@@ -22,6 +21,8 @@ let question_title = document.getElementById("question_title");
 let question = document.getElementById("question");
 
 let question_image = document.getElementById("question_image");
+
+let return_button = document.getElementById("return");
 
 // op1
 let option_1 = document.getElementById("option_1");
@@ -45,8 +46,29 @@ function loadQuestion() {
     questionNumber++;
     let questionArray;
 
+    if (questionNumber == 16) {
+        let play_area = document.getElementById("play_area");
+        play_area.style = "justify-content: center;";
+
+        easytext.style = "display: none;";
+        mediumtext.style = "display: none;";
+        hardtext.style = "display: none;";
+
+        question_image.src = "";
+
+        question_title.innerText = "Fim de jogo!";
+        question.innerText = "Parabéns!";
+        return_button.style = "display: flex;";
+
+        option_1.style = "display: none;";
+        option_2.style = "display: none;";
+        option_3.style = "display: none;";
+        option_4.style = "display: none;";
+
+        return;
+    };
+
     changeQuestionDificulty();
-    // checkRemainingQuestions();
 
     if (dificulty == 1) {
         questionArray = easy_questions;
@@ -88,11 +110,14 @@ function loadQuestion() {
     option_3.style = "display: none;";
     option_4.style = "display: none;";
 
-    option_1.style = "border-radius: 0;height: 100%";
-    option_2.style = "border-radius: 0;height: 100%";
+    option_1.style = "border-radius: 0 5rem 5rem 0;height: 100%";
+    option_2.style = "border-radius: 5rem 0 0 5rem;height: 100%";
 };
 
-loadQuestion(); // debug
+// Reload page when button is clicked
+return_button.addEventListener("click", () => {
+    location.reload();
+});
 
 function correctAnswer() {
     points++;
@@ -105,23 +130,45 @@ function incorrectAnswer() {
 };
 
 function changeQuestionDificulty() {
-    if ((points <= 3) ^ ((medium_questions.length == 0) || (hard_questions.length == 0))) {
-        // esse medium_question.length bla bla bla foi a lógica que
-        // tentei pensar para resolver o problema
-        dificulty = 1;
-        easytext.innerText = "> EASY <";
-        mediumtext.innerText = "MEDIUM";
-        hardtext.innerText = "HARD";
+    let target;
+
+    if (points <= 3) {
+        target = 1;
     } else if (points > 3 && points <= 6) {
+        target = 2;
+    } else {
+        target = 3;
+    };
+
+    if (easy_questions.length == 0 || medium_questions.length == 0 || hard_questions.length == 0) {
+        if (easy_questions.length == 0 && medium_questions.length != 0) {
+            target = 2;
+        };
+
+        if (medium_questions.length == 0 && hard_questions.length != 0) {
+            target = 3;
+        };
+
+        if (hard_questions.length == 0 && easy_questions.length != 0) {
+            target = 1;
+        };
+    };
+
+    if (target == 1) {
+        dificulty = 1;
+        easytext.innerText = "> FÁCIL <";
+        mediumtext.innerText = "MÉDIO";
+        hardtext.innerText = "DIFÍCIL";
+    } else if (target == 2) {
         dificulty = 2;
-        easytext.innerText = "EASY";
-        mediumtext.innerText = "> MEDIUM <";
-        hardtext.innerText = "HARD";
+        easytext.innerText = "FÁCIL";
+        mediumtext.innerText = "> MÉDIO <";
+        hardtext.innerText = "DIFÍCIL";
     } else {
         dificulty = 3;
-        easytext.innerText = "EASY";
-        mediumtext.innerText = "MEDIUM";
-        hardtext.innerText = "> HARD <";
+        easytext.innerText = "FÁCIL";
+        mediumtext.innerText = "MÉDIO";
+        hardtext.innerText = "> DIFÍCIL <";
     };
 };
 
@@ -139,7 +186,7 @@ function verifyQuestion(option) {
             };
 
             easy_questions.pop();
-            console.log(easy_questions);
+            // console.log(easy_questions);
             loadQuestion();
 
             break;
@@ -153,7 +200,7 @@ function verifyQuestion(option) {
             };
 
             medium_questions.pop();
-            console.log(medium_questions);
+            // console.log(medium_questions);
             loadQuestion();
 
             break;
@@ -164,11 +211,14 @@ function verifyQuestion(option) {
                 correctAnswer();
             } else {
                 incorrectAnswer();
-            }
+            };
 
             hard_questions.pop();
+            // console.log(medium_questions);
             loadQuestion();
 
             break;
-    }
-}
+    };
+};
+
+loadQuestion(); // debug
