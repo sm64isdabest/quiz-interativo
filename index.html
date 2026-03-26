@@ -23,27 +23,29 @@
       </div>
 
       <div id="about">
-        <div class="window">
-          <div class="window-header">
+        <div class="window-header">
+          <div class="left-side">
             <picture>
               <img src="" alt="Ícone do Quiz Interativo" />
             </picture>
 
-            <h1>sobre.exe</h1>
-
-            <button></button>
+            <h1 class="consolas-font">sobre.exe</h1>
           </div>
 
-          <h2>Sobre o projeto:</h2>
+          <button id="close_button"><i class="bi bi-x-lg"></i></button>
+        </div>
+
+        <div class="window">
+          <h2 class="consolas-font">Sobre o projeto:</h2>
           <p></p>
         </div>
       </div>
 
       <div id="play_area">
         <div class="dificulty-box">
-          <p class="consolas-font" id="easy">> EASY <</p>
-          <p class="consolas-font" id="medium">MEDIUM</p>
-          <p class="consolas-font" id="hard">HARD</p>
+          <p class="consolas-font" id="easy">> FÁCIL <</p>
+          <p class="consolas-font" id="medium">MÉDIO</p>
+          <p class="consolas-font" id="hard">DIFÍCIL</p>
         </div>
 
         <div id="question-box">
@@ -83,8 +85,9 @@
       </div>
     </main>
 
-    <script src="splash-text.js"></script>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="questions.js"></script>
+    <script type="module" src="js/switch-screen.js"></script>
+    <script src="js/splash-text.js"></script>
+    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/questions.js"></script>
   </body>
 </html>
