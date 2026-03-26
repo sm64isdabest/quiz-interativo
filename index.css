@@ -66,16 +66,24 @@ body {
 
 .window {
   background-color: #303030;
-  width: 70%;
-  height: 85%;
+  width: 50%;
+  height: auto;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.window h2, .window p, .window h3 {
+  padding: 0 1rem;
+  text-align: justify;
 }
 
 .window-header {
   height: 2.25rem;
   background-color: rgb(70, 70, 70);
   display: flex;
-  width: 70%;
+  width: 50%;
   justify-content: space-between;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .left-side {
@@ -87,14 +95,16 @@ body {
 .left-side h1 {
   width: fit-content;
   margin: 0;
-  font-size: larger;
+  font-size: large;
 }
 
 #close_button {
   background-color: #f52e0c;
   color: white;
   width: 7rem;
-  /* border: ; */
+  cursor: pointer;
+  border: 0.2rem solid rgb(206, 36, 6);
+  border-radius: 0 1rem 0 0;
 }
 
 /* ABOUT */
