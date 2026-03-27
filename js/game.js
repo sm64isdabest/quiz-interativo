@@ -22,6 +22,8 @@ let hardtext = document.getElementById("hard");
 let question_title = document.getElementById("question_title");
 let question = document.getElementById("question");
 
+let total_score = document.getElementById("total_score");
+
 let question_image = document.getElementById("question_image");
 
 let return_button = document.getElementById("return");
@@ -48,7 +50,8 @@ function loadQuestion() {
     questionNumber++;
     let questionArray;
 
-    if (questionNumber == 16) {
+    // Below will run when there are no more questions
+    if (questionNumber == 16) {  
         let play_area = document.getElementById("play_area");
         play_area.style = "display: flex;justify-content: center;";
 
@@ -60,6 +63,10 @@ function loadQuestion() {
 
         question_title.innerText = "Fim de jogo!";
         question.innerText = "Parabéns!";
+
+        total_score.style = "display: block;";
+        total_score.innerText += " " + points * 10;
+
         return_button.style = "display: flex;";
 
         option_1.style = "display: none;";
