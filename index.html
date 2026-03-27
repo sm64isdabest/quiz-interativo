@@ -9,13 +9,18 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <title>Quiz Interativo</title>
+    <title>NeuroQuest</title>
   </head>
 
   <body>
     <main>
+      <div class="screen-warning">
+        <i class="bi bi-phone"></i>
+        <p class="consolas-font">Rotacione sua tela</p>
+      </div>
+
       <div id="menu">
-        <h1 class="consolas-font">Quiz</h1>
+        <h1 class="consolas-font">NeuroQuest</h1>
         <p class="consolas-font" id="splash_text">Texto legal</p>
         <!-- <p class="consolas-font">Recorde:</p> -->
 
@@ -27,7 +32,7 @@
         <div class="window-header">
           <div class="left-side">
             <picture>
-              <img src="img/favicon.ico" alt="Ícone do Quiz Interativo" />
+              <img src="img/favicon.ico" alt="Ícone do NeuroQuest" />
             </picture>
 
             <h1 class="consolas-font">sobre.exe</h1>
@@ -42,7 +47,7 @@
 
           <h3 class="consolas-font">Desenvolvedores:</h3>
           <ul class="consolas-font">
-            <li>RONALDO</li>
+            <li>RONALDO RODRIGUES PEDREIRA</li>
             <li>THIAGO PINHEIRO SANTOS</li>
             <li>VICTOR HUGO CARVALHO BRANDÃO</li>
           </ul>
@@ -51,18 +56,19 @@
       </div>
 
       <div id="play_area">
-        <div class="dificulty-box">
+        <div class="difficulty-box">
           <p class="consolas-font" id="easy">> FÁCIL <</p>
           <p class="consolas-font" id="medium">MÉDIO</p>
           <p class="consolas-font" id="hard">DIFÍCIL</p>
         </div>
 
         <div id="question-box">
-          <h1 class="consolas-font" id="question_title">Question 1</h1>
+          <h1 class="consolas-font" id="question_title">Questão 1</h1>
           <p class="consolas-font" id="question"></p>
 
           <!-- Estará invisível até o jogo acabar -->
-          <p class="consolas-font" id="total_score">Pontuação total:</p>
+          <p class="consolas-font" id="score_announcer">Pontuação total:</p>
+          <p class="consolas-font" id="total_score">0</p>
 
           <picture>
             <img id="question_image" src="" alt="" />

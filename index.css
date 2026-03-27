@@ -8,8 +8,7 @@ main {
 }
 
 body {
-  /* background-image: url("img/code-background.png"); */
-  background-color: #1e1e1e;
+  background: linear-gradient(#1e1e1e, black);
 }
 
 .consolas-font {
@@ -20,7 +19,8 @@ body {
 
 #menu,
 #about,
-#play_area {
+#play_area,
+.screen-warning {
   height: 100%;
   width: 100%;
   display: flex;
@@ -30,21 +30,68 @@ body {
   color: white;
 }
 
+.screen-warning {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.bi-phone {
+  font-size: 15rem;
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+@keyframes spin {
+  100% {
+    margin-left: 1rem;
+    rotate: -90deg 0 0 1;
+  }
+}
+
+.screen-warning p {
+  font-size: 1.5rem;
+}
+
 #about,
 #play_area {
   display: none;
 }
 
-/* MENU  */
+/* ---- */
+/* MENU */
+/* ---- */
 
 #menu h1 {
   font-size: 5rem;
   margin: 0;
 }
 
+/* splash-text */
 #menu p {
   color: #fccc00;
   -webkit-text-stroke-color: rgba(252, 204, 0, 0.5);
+
+  animation-name: zoom-n-rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes zoom-n-rotate {
+  50% {
+    scale: 1.15;
+    transform: rotate(5deg);
+  }
+  75% {
+    scale: 1.075;
+    transform: rotate(-5deg);
+  }
+  100% {
+    scale: 1;
+  }
 }
 
 #menu button {
@@ -58,11 +105,20 @@ body {
   color: white;
   border-radius: 1rem;
   justify-self: center;
+  transition: padding 0.25s;
 }
 
-/* MENU */
+#menu button:hover {
+  padding: 1rem 2.5rem;
+}
 
+/* ---- */
+/* MENU */
+/* ---- */
+
+/* ----- */
 /* ABOUT */
+/* ----- */
 
 .window {
   background-color: #303030;
@@ -107,17 +163,31 @@ body {
 }
 
 #close_button {
-  background-color: #f52e0c;
+  background: none;
   color: white;
   width: 7rem;
   cursor: pointer;
-  border: 0.2rem solid rgb(206, 36, 6);
+  border: none rgb(206, 36, 6);
   border-radius: 0 1rem 0 0;
+  transition:
+    width 0.75s,
+    border 0.35s,
+    background-color 0.25s;
 }
 
-/* ABOUT */
+#close_button:hover {
+  width: 7.5rem;
+  border: 0.2rem solid rgb(206, 36, 6);
+  background-color: #f52e0c;
+}
 
+/* ----- */
+/* ABOUT */
+/* ----- */
+
+/* --------- */
 /* PLAY_AREA */
+/* --------- */
 
 .question-box {
   justify-content: flex-start;
@@ -128,14 +198,15 @@ body {
   align-items: center;
 }
 
-.dificulty-box {
+.difficulty-box {
   display: flex;
   gap: 5rem;
   position: absolute;
+  align-items: center;
   font-family: Consolas, "Courier New", monospace;
   font-size: 2rem;
   top: 0;
-  max-width: calc(100vw - 435px);
+  max-width: 100%;
 }
 
 #easy {
@@ -159,9 +230,18 @@ body {
   font-size: larger;
 }
 
+#score_announcer {
+  text-align: center;
+  display: none;
+}
+
 #total_score {
   text-align: center;
   display: none;
+  font-size: xx-large;
+  margin: 0 0 1rem 0;
+  color: #fccc00;
+  -webkit-text-stroke-color: rgba(252, 204, 0, 0.5);
 }
 
 #question_image {
@@ -185,6 +265,13 @@ body {
   left: 0;
   background-color: #f52e0c;
   border-radius: 5% 5% 50% 5%;
+  transition:
+    background-color 0.25s,
+    border-width 0.25s;
+}
+#option_1:hover {
+  background-color: rgba(245, 46, 12, 0.75);
+  border-width: 0.5rem;
 }
 
 #option_1 i {
@@ -199,6 +286,13 @@ body {
   right: 0;
   background-color: #4b79f3;
   border-radius: 5% 5% 5% 50%;
+  transition:
+    background-color 0.25s,
+    border-width 0.25s;
+}
+#option_2:hover {
+  background-color: rgba(75, 121, 243, 0.75);
+  border-width: 0.5rem;
 }
 
 #option_2 i {
@@ -213,6 +307,13 @@ body {
   left: 0;
   background-color: #fccc00;
   border-radius: 5% 50% 5% 5%;
+  transition:
+    background-color 0.25s,
+    border-width 0.25s;
+  }
+  #option_3:hover {
+    background-color: rgba(252, 204, 0, 0.75);
+  border-width: 0.5rem;
 }
 
 #option_3 i {
@@ -227,6 +328,13 @@ body {
   right: 0;
   background-color: #42cf02;
   border-radius: 50% 5% 5% 5%;
+  transition:
+    background-color 0.25s,
+    border-width 0.25s;
+}
+#option_4:hover {
+  background-color: rgba(66, 207, 2, 0.75);
+  border-width: 0.5rem;
 }
 
 #option_4 i {
@@ -247,6 +355,100 @@ body {
   justify-self: center;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: padding 0.25s;
 }
 
+#return:hover {
+  padding: 1rem 2.5rem;
+}
+
+/* --------- */
 /* PLAY_AREA */
+/* --------- */
+
+@media (max-width: 1000px) {
+  .difficulty-box {
+    flex-direction: column;
+    gap: 0;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .difficulty-box p {
+    margin: 0;
+  }
+}
+
+@media (max-height: 550px) {
+  .window-header,
+  .window {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #close_button {
+    border-radius: 0.5rem;
+    background: #f52e0c;
+    border: 3px solid rgb(206, 36, 6);
+  }
+  
+  .window-header {
+    position: absolute;
+    top: 0;
+  }
+  
+  .window h2 {
+    margin-top: 5rem;
+  }
+  
+  .difficulty-box {
+    flex-direction: row;
+    gap: 2.5rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .difficulty-box p,
+  #question_title {
+    margin: 0;
+  }
+
+  #question {
+    margin: 0.5rem 0;
+  }
+
+  #question_image {
+    max-width: calc(90vw - 435px);
+  }
+
+  .option {
+    width: 11rem;
+  }
+
+  #option_1 i,
+  #option_2 i,
+  #option_3 i,
+  #option_4 i {
+    padding: 0.5rem;
+  }
+
+  #answer {
+    font-size: 1.15rem;
+  }
+}
+
+/* SCREEN WARNING WHEN VERTICAL */
+@media (max-width: 768px) {
+  #menu,
+  #about,
+  #play_area {
+    display: none !important;
+  }
+
+  .screen-warning {
+    display: flex;
+  }
+
+  .bi-phone {
+    animation-play-state: running;
+  }
+}

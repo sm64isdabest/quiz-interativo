@@ -8,7 +8,7 @@ export { loadQuestion }
 
 // GAME ELEMENTS
 let points = 0;
-let dificulty = 1;
+let difficulty = 1;
 let questionNumber = 0;
 // 1 - Easy
 // 2 - Medium
@@ -22,6 +22,7 @@ let hardtext = document.getElementById("hard");
 let question_title = document.getElementById("question_title");
 let question = document.getElementById("question");
 
+let score_announcer = document.getElementById("score_announcer");
 let total_score = document.getElementById("total_score");
 
 let question_image = document.getElementById("question_image");
@@ -64,8 +65,9 @@ function loadQuestion() {
         question_title.innerText = "Fim de jogo!";
         question.innerText = "Parabéns!";
 
+        score_announcer.style = "display: block;";
         total_score.style = "display: block;";
-        total_score.innerText += " " + points * 10;
+        total_score.innerText = points * 10;
 
         return_button.style = "display: flex;";
 
@@ -77,11 +79,11 @@ function loadQuestion() {
         return;
     };
 
-    changeQuestionDificulty();
+    changeQuestiondifficulty();
 
-    if (dificulty == 1) {
+    if (difficulty == 1) {
         questionArray = easy_questions;
-    } else if (dificulty == 2) {
+    } else if (difficulty == 2) {
         questionArray = medium_questions;
     } else {
         questionArray = hard_questions;
@@ -93,7 +95,7 @@ function loadQuestion() {
     // desse jeito iguala com a lógica das posições
     // 0 = 1º, 1 = 2º
 
-    question_title.innerText = "Question " + questionNumber;
+    question_title.innerText = "Questão " + questionNumber;
     question.innerText = questionArray[questionLength].question_title;
 
     if (questionArray[questionLength].question_image) {
@@ -138,7 +140,7 @@ function incorrectAnswer() {
     console.log("Incorrect answer! -10 points");
 };
 
-function changeQuestionDificulty() {
+function changeQuestiondifficulty() {
     let target;
 
     if (points <= 3) {
@@ -152,29 +154,32 @@ function changeQuestionDificulty() {
     if (easy_questions.length == 0 || medium_questions.length == 0 || hard_questions.length == 0) {
         if (easy_questions.length == 0 && medium_questions.length != 0) {
             target = 2;
+            easytext.style.textDecoration = "line-through"
         };
 
         if (medium_questions.length == 0 && hard_questions.length != 0) {
             target = 3;
+            mediumtext.style.textDecoration = "line-through"
         };
 
         if (hard_questions.length == 0 && easy_questions.length != 0) {
             target = 1;
+            hardtext.style.textDecoration = "line-through"
         };
     };
 
     if (target == 1) {
-        dificulty = 1;
+        difficulty = 1;
         easytext.innerText = "> FÁCIL <";
         mediumtext.innerText = "MÉDIO";
         hardtext.innerText = "DIFÍCIL";
     } else if (target == 2) {
-        dificulty = 2;
+        difficulty = 2;
         easytext.innerText = "FÁCIL";
         mediumtext.innerText = "> MÉDIO <";
         hardtext.innerText = "DIFÍCIL";
     } else {
-        dificulty = 3;
+        difficulty = 3;
         easytext.innerText = "FÁCIL";
         mediumtext.innerText = "MÉDIO";
         hardtext.innerText = "> DIFÍCIL <";
@@ -184,7 +189,7 @@ function changeQuestionDificulty() {
 function verifyQuestion(option) {
     let questionLength;
 
-    switch (dificulty) {
+    switch (difficulty) {
         case 1:
             questionLength = easy_questions.length - 1;
 
