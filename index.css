@@ -20,7 +20,7 @@ body {
 #menu,
 #about,
 #play_area,
-.screen-warning {
+#screen_warning {
   height: 100%;
   width: 100%;
   display: flex;
@@ -30,10 +30,10 @@ body {
   color: white;
 }
 
-.screen-warning {
+#screen_warning {
   display: none;
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: black;
   z-index: 999;
 }
 
@@ -51,7 +51,7 @@ body {
   }
 }
 
-.screen-warning p {
+#screen_warning p {
   font-size: 1.5rem;
 }
 
@@ -433,22 +433,5 @@ body {
 
   #answer {
     font-size: 1.15rem;
-  }
-}
-
-/* SCREEN WARNING WHEN VERTICAL */
-@media (max-width: 768px) {
-  #menu,
-  #about,
-  #play_area {
-    display: none !important;
-  }
-
-  .screen-warning {
-    display: flex;
-  }
-
-  .bi-phone {
-    animation-play-state: running;
   }
 }
